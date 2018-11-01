@@ -5,8 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Model_Validation"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Compare Beam Data" Height="600" Width="800"
+        Closing="Window_Closing">
+
     <Grid>
-        
+        <TextBlock Text="Calculate Verification Data" Margin="10,10,0,0" FontSize="24" FontWeight="Bold"></TextBlock>
+        <TextBlock  Text="Patient ID:" Margin="10,40,0,0" FontSize="10" FontWeight="Bold"></TextBlock>
+        <TextBox Name="patient_txt" Width="150" Height="30" Margin="120,40,0,0"
+                 HorizontalAlignment="Left" VerticalAlignment="Top"></TextBox>
+        <!--Create a Button here to load the patient from patient_txt when the button is clicked. Click Event needed-->
+        <Button Name="patLoad_btn" Width="150" Height="30" Margin="300,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+                 Click="patLoad_btn_Click" Content="Load Patient"></Button>
+                 
+        <TextBlock Text="Course:" Margin="10,80,0,0" FontSize="18" FontWeight="Bold"></TextBlock>
+        <!--Create a combobox here to show all the coures that are inside of the current patient.
+        When a course is selected the plan combobox should show all the plans selected (below). SeletionChanged Event Needed.-->
+        <ComboBox Name="Course_cmb" Margin="120,80,0,0" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="Course_cmb_SelectionChanged"></ComboBox>
+        <TextBlock Text="Plan: " Margin="300,80,0,0" FontSize="18" FontWeight="Bold"></TextBlock>
+        <!-- Create a combobox here. This combobox should list all the plans in the selected course from the course combobox-->
+        <ComboBox Name="plan_cmb" Margin="410,80,0,0" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top"></ComboBox>
+
+        <TextBlock Text="Measured Scans" Margin="10,120,0,0" FontSize="24" FontWeight="Bold"></TextBlock>
+        <!--Create a button here to load a beam scan data file from the file system. Click Event Needed.-->
+        <Border BorderBrush="Black" BorderThickness="2" Height="200" Width="400"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="180,150,0,0">
+            <ScrollViewer Margin="0">
+                <StackPanel Name="prevScans_sp" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top"></StackPanel>
+            </ScrollViewer>            
+        </Border>
+        <Button Name="getScan_btn" Width="150" Height="30" Margin="10,160,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+                Click="getScan_btn_Click" Content="Find W2CAD scan"></Button>
+               
     </Grid>
 </Window>
